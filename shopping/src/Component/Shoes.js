@@ -1,6 +1,14 @@
-import React, { useState } from "react";
-import data from "../data/data";
-export default function Shoes(props) {
-  console.log(props.shoes[1]);
-  return <>{Array.isArray(props) ? "t" : "f"}</>;
+import React from "react";
+import { Col } from "react-bootstrap";
+export default function Shoes({ shoes }) {
+  console.log(shoes);
+  return (
+    <Col key={shoes.i}>
+      <img src={shoes.img} width="100%" alt="신발" />
+      <h4>{shoes.title}</h4>
+      <p>
+        {shoes.content} & {shoes.price}
+      </p>
+    </Col>
+  );
 }

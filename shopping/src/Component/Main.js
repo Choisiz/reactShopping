@@ -7,16 +7,8 @@ export default function Main() {
   return (
     <Container>
       <Row>
-        {Array.isArray(data) ? (
-          data.map(({ img, title, content, price }) => (
-            <Col>
-              <img src={img} width="100%" />
-              <h4>{title}</h4>
-              <p>
-                {content} & {price}
-              </p>
-            </Col>
-          ))
+        {Array.isArray(shoes) ? (
+          shoes.map((value, i) => <Shoes shoes={value} key={i} />)
         ) : (
           <Col>
             <h4>데이가 존재하지 않습니다</h4>
