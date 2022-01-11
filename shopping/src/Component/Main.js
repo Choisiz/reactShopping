@@ -1,33 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import data from "../data/data";
+import Shoes from "./Shoes";
 export default function Main() {
+  const [shoes, setShoes] = useState(data);
   return (
     <Container>
       <Row>
-        <Col md="4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes1.jpg"
-            width="100%"
-          />
-          <h4>상품명</h4>
-          <p>상품설명 & 가격</p>
-        </Col>
-        <Col md="4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes2.jpg"
-            width="100%"
-          />
-          <h4>상품명</h4>
-          <p>상품설명 & 가격</p>
-        </Col>
-        <Col md="4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes3.jpg"
-            width="100%"
-          />
-          <h4>상품명</h4>
-          <p>상품설명 & 가격</p>
-        </Col>
+        {data.map(({ img, title, content, price }) => (
+          <Col>
+            <img src={img} width="100%" />
+            <h4>{title}</h4>
+            <p>
+              {content} & {price}
+            </p>
+          </Col>
+        ))}
       </Row>
     </Container>
   );
