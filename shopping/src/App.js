@@ -9,8 +9,13 @@ function App() {
     <div className="App">
       <NavbarContainer />
       <Jumbotron />
-      <Route exact path="/" component={Main} />
-      <Route path="/detail" component={Detail} />
+      <Switch>
+        <Route exact path="/" component={Main} />
+        <Route path="/detail" component={Detail} />
+        <Route path="/:id">
+          <div>hellddo</div>
+        </Route>
+      </Switch>
     </div>
   );
 }
