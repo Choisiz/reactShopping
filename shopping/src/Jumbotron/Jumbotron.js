@@ -1,7 +1,7 @@
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import React from "react";
 
-export default function Navbar() {
+export default function Jumbotron() {
   return (
     <div className="background">
       <h1>20% Season Off</h1>
