@@ -1,10 +1,13 @@
 import React from "react";
 import { Col } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
 export default function Shoes({ shoes }) {
-  console.log(shoes);
+  const id = shoes.id;
   return (
     <Col key={shoes.i}>
-      <img src={shoes.img} width="100%" alt="신발" />
+      <Link to={{ pathname: `detail/${id}`, shoes: shoes }}>
+        <img src={shoes.img} width="100%" alt="신발" />
+      </Link>
       <h4>{shoes.title}</h4>
       <p>
         {shoes.content} & {shoes.price}
