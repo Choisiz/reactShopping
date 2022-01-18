@@ -1,0 +1,14 @@
+$mainColor: red;
+
+.red {
+  color: $mainColor;
+}
+
+div.container {
+  h4 {
+    color: blue;
+  }
+  p {
+    color: green;
+  }
+}

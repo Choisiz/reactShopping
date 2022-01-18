@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-bootstrap";
 import { useHistory, useParams, useLocation } from "react-router-dom";
+import "../../src/Detail.scss";
 export default function Detail({ location }) {
   const shoes = location.shoes;
   let history = useHistory();
