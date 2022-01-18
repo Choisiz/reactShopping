@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-bootstrap";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import "../../src/Detail.scss";
+import styled from "styled-components";
 export default function Detail({ location }) {
   const shoes = location.shoes;
   let history = useHistory();
@@ -9,9 +10,24 @@ export default function Detail({ location }) {
   const pageBack = () => {
     history.goBack();
   };
+
+  const Box = styled.div`
+    padding: 20px;
+  `;
+
+  const Title = styled.h4`
+    font-size: 25px;
+    color: ${(props) => props.color};
+  `;
   return (
     <div className="container">
       <div className="row">
+        <Box>
+          <Title color={"red"}>상품판매</Title>
+        </Box>
+        <div className="my-alert">
+          <p>재고가 얼마 남지 않았습니다</p>
+        </div>
         <div className="col-md-6">
           <img src={shoes.img} width="100%" />
         </div>

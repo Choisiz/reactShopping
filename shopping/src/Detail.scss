@@ -4,11 +4,34 @@ $mainColor: red;
   color: $mainColor;
 }
 
-div.container {
-  h4 {
-    color: blue;
-  }
+//css 함수
+@mixin fun {
+  background: #eeeeee;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
   p {
-    color: green;
+    margin-bottom: 0;
   }
 }
+
+.my-alert {
+  @include fun();
+}
+
+//복사붙여넣기
+.my-alert2 {
+  @extend .my-alert;
+  background: #ffe591;
+}
+
+// div.container {
+//   h4 {
+//     color: pink;
+//   }
+//   p {
+//     color: green;
+//   }
+// }
