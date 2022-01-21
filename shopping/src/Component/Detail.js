@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-bootstrap";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import "../../src/Detail.scss";
@@ -19,15 +19,27 @@ export default function Detail({ location }) {
     font-size: 25px;
     color: ${(props) => props.color};
   `;
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+  });
+
+  const [alert, setAlert] = useState(true);
+  const myAlert = (
+    <div className="my-alert">
+      <p>재고가 얼마 남지 않았습니다</p>
+    </div>
+  );
+
   return (
     <div className="container">
       <div className="row">
         <Box>
           <Title color={"red"}>상품판매</Title>
         </Box>
-        <div className="my-alert">
-          <p>재고가 얼마 남지 않았습니다</p>
-        </div>
+        {alert ? myAlert : null}
         <div className="col-md-6">
           <img src={shoes.img} width="100%" />
         </div>

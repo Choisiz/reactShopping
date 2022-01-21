@@ -17,6 +17,7 @@ $mainColor: red;
   }
 }
 
+//함수쓰기
 .my-alert {
   @include fun();
 }

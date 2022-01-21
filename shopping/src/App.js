@@ -11,7 +11,6 @@ function App() {
   return (
     <div className="App">
       <NavbarContainer />
-      <Jumbotron />
       <Switch>
         <Route exact path="/" component={Main} />
         <Route path="/detail" component={Detail} />
