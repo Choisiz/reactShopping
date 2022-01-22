@@ -6,14 +6,16 @@ import Shoes from "./Shoes";
 import axios from "axios";
 export default function Main() {
   const [shoes, setShoes] = useState(data);
+  const [mores, setMores] = useState("");
   const more = () => {
     axios
       .get("https://codingapple1.github.io/shop/data2.json")
       .then((res) => {
-        console.log(res.data);
+        //res.map((value, i) => <Row shoes={value} key={i}></Row>);
+        setMores(res.data);
       })
-      .catch(() => {
-        console.log("false");
+      .catch((err) => {
+        console.log(err);
       });
   };
   return (
@@ -25,14 +27,18 @@ export default function Main() {
             shoes.map((value, i) => <Shoes shoes={value} key={i} />)
           ) : (
             <Col>
-              <h4>데이가 존재하지 않습니다</h4>
+              <h4>데이터가 존재하지 않습니다</h4>
             </Col>
           )}
         </Row>
         <Row>
-          <Col>
-            <Button onClick={more}>더보기</Button>
-          </Col>
+          {mores ? (
+            mores.map((value, i) => <Shoes shoes={value} key={i} />)
+          ) : (
+            <Col>
+              <Button onClick={more}>더보기</Button>
+            </Col>
+          )}
         </Row>
       </Container>
     </div>
