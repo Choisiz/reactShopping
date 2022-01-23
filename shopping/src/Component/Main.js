@@ -7,17 +7,18 @@ import axios from "axios";
 export default function Main() {
   const [shoes, setShoes] = useState(data);
   const [mores, setMores] = useState("");
+  //업로드시 ajax요청하고 싶다면 useEffect이용
   const more = () => {
     axios
       .get("https://codingapple1.github.io/shop/data2.json")
       .then((res) => {
-        //res.map((value, i) => <Row shoes={value} key={i}></Row>);
-        setMores(res.data);
+        setShoes([...shoes, ...res.data]);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  console.log(shoes);
   return (
     <div>
       <Jumbotron />
@@ -32,13 +33,9 @@ export default function Main() {
           )}
         </Row>
         <Row>
-          {mores ? (
-            mores.map((value, i) => <Shoes shoes={value} key={i} />)
-          ) : (
-            <Col>
-              <Button onClick={more}>더보기</Button>
-            </Col>
-          )}
+          <Col>
+            <Button onClick={more}>더보기</Button>
+          </Col>
         </Row>
       </Container>
     </div>
