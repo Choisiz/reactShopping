@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import "../../src/Detail.scss";
 import styled from "styled-components";
 import { stockContext } from "../App";
+import Tabs from "./Tabs";
 export default function Detail({ location }) {
   const Box = styled.div`
     padding: 20px;
@@ -58,6 +59,7 @@ export default function Detail({ location }) {
           </button>
         </div>
       </div>
+      <Tabs />
     </div>
   );
 }
