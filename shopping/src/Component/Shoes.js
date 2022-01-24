@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Col } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 export default function Shoes({ shoes }) {

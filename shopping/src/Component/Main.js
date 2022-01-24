@@ -5,11 +5,8 @@ import Jumbotron from "../Jumbotron/Jumbotron";
 import Shoes from "./Shoes";
 import axios from "axios";
 
-export let stockContext = React.createContext(); //같은 변수값을 공유할 범위생성
-
 export default function Main() {
   const [shoes, setShoes] = useState(data);
-  const [stock, setStock] = useState([10, 11, 12]);
   //업로드시 ajax요청하고 싶다면 useEffect이용
   const more = () => {
     axios
@@ -26,17 +23,15 @@ export default function Main() {
     <div>
       <Jumbotron />
       <Container>
-        <stockContext.Provider value={stock}>
-          <Row>
-            {Array.isArray(shoes) ? (
-              shoes.map((value, i) => <Shoes shoes={value} key={i} />)
-            ) : (
-              <Col>
-                <h4>데이터가 존재하지 않습니다</h4>
-              </Col>
-            )}
-          </Row>
-        </stockContext.Provider>
+        <Row>
+          {Array.isArray(shoes) ? (
+            shoes.map((value, i) => <Shoes shoes={value} key={i} />)
+          ) : (
+            <Col>
+              <h4>데이터가 존재하지 않습니다</h4>
+            </Col>
+          )}
+        </Row>
         <Row>
           <Col>
             <Button onClick={more}>더보기</Button>

@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-bootstrap";
-import { useHistory, useParams, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../src/Detail.scss";
 import styled from "styled-components";
+import { stockContext } from "../App";
 export default function Detail({ location }) {
-  const shoes = location.shoes;
-  let history = useHistory();
-
-  const pageBack = () => {
-    history.goBack();
-  };
-
   const Box = styled.div`
     padding: 20px;
   `;
@@ -20,6 +14,11 @@ export default function Detail({ location }) {
     color: ${(props) => props.color};
   `;
 
+  const shoes = location.shoes;
+  console.log("s", shoes);
+  let history = useHistory();
+  let stock = useContext(stockContext);
+
   useEffect(() => {
     let timer = setTimeout(() => {
       setAlert(false);
@@ -27,6 +26,11 @@ export default function Detail({ location }) {
   });
 
   const [alert, setAlert] = useState(true);
+
+  const pageBack = () => {
+    history.goBack();
+  };
+
   const myAlert = (
     <div className="my-alert">
       <p>재고가 얼마 남지 않았습니다</p>
@@ -45,8 +49,9 @@ export default function Detail({ location }) {
         </div>
         <div className="col-md-6 mt-4">
           <h4 className="pt-5">{shoes.title}</h4>
-          <p>{shoes.content}</p>
-          <p>{shoes.price}</p>
+          <p>내용: {shoes.content}</p>
+          <p>가격: {shoes.price}</p>
+          <p>재고: {stock[shoes.id]}</p>
           <button className="btn btn-danger">주문하기</button>
           <button className="btn btn-primary" onClick={pageBack}>
             뒤로가기
