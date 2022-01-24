@@ -4,6 +4,15 @@ $mainColor: red;
   color: $mainColor;
 }
 
+.wow-enter {
+  opacity: 0;
+}
+
+.wow-enter-active {
+  opacity: 1;
+  transition: all 500ms;
+}
+
 //css 함수
 @mixin fun {
   background: #eeeeee;
