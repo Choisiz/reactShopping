@@ -3,6 +3,7 @@ import { Col } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 export default function Shoes({ shoes }) {
   const id = shoes.id;
+  console.log("파라미라", shoes);
   return (
     <Col md={4} key={shoes.i}>
       <Link to={{ pathname: `detail/${id}`, shoes: shoes }}>

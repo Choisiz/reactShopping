@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "../../src/Detail.scss";
 import styled from "styled-components";
 import { stockContext } from "../App";
@@ -16,7 +16,10 @@ export default function Detail({ location }) {
   `;
 
   const shoes = location.shoes;
-  console.log("s", shoes);
+
+  let qq = useParams();
+  console.log("qqq", qq);
+
   let history = useHistory();
   let stock = useContext(stockContext);
 
