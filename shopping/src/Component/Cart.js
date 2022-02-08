@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
 
-function Cart() {
+function Cart(props) {
   return (
     <div>
       <Table responsive>
@@ -12,12 +12,18 @@ function Cart() {
           <th>수량</th>
           <th>변경</th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>{props.state[0].name}</td>
-        </tr>
+        {props.state.map((a, i) => {
+          return (
+            <tr key={i}>
+              <td>{a.id}</td>
+              <td>{a.name}</td>
+              <td>{a.quan}</td>
+              <td>
+                <button onClick={() => {}}>+</button>
+              </td>
+            </tr>
+          );
+        })}
       </Table>
     </div>
   );
