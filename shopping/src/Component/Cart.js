@@ -19,7 +19,20 @@ function Cart(props) {
               <td>{a.name}</td>
               <td>{a.quan}</td>
               <td>
-                <button onClick={() => {}}>+</button>
+                <button
+                  onClick={() => {
+                    props.dispatch({ type: "plus" });
+                  }}
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => {
+                    props.dispatch({ type: "minus" });
+                  }}
+                >
+                  -
+                </button>
               </td>
             </tr>
           );
