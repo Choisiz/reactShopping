@@ -4,13 +4,23 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 // let store = createStore(() => {
 //   return [
 //     { id: 0, name: "최고신발", quan: 2 },
 //     { id: 2, name: "최고신발2", quan: 1 },
 //   ];
 // });
+
+let alertInit = true;
+
+function reducer2(state = alertInit, action) {
+  if (action.type === "alertClose") {
+    return (state = false);
+  } else {
+    return state;
+  }
+}
 
 let init = [
   { id: 0, name: "최고신발", quan: 2 },
@@ -31,7 +41,7 @@ function reducer(state = init, action) {
   }
 }
 
-let store = createStore(reducer);
+let store = createStore(combineReducers({ reducer, reducer2 }));
 
 ReactDOM.render(
   <React.StrictMode>
