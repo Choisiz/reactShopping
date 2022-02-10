@@ -5,7 +5,10 @@ import "../../src/Detail.scss";
 import styled from "styled-components";
 import { stockContext } from "../App";
 import Tabs from "./Tabs";
-export default function Detail({ location }) {
+import { connect } from "react-redux";
+function Detail(props) {
+  const location = props.location;
+
   const Box = styled.div`
     padding: 20px;
   `;
@@ -18,7 +21,6 @@ export default function Detail({ location }) {
   const shoes = location.shoes;
 
   let qq = useParams();
-  console.log("qqq", qq);
 
   let history = useHistory();
   let stock = useContext(stockContext);
@@ -56,7 +58,18 @@ export default function Detail({ location }) {
           <p>내용: {shoes.content}</p>
           <p>가격: {shoes.price}</p>
           <p>재고: {stock[shoes.id]}</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              props.dispatch({
+                type: "order",
+                payload: { id: 2, name: "new", quan: 1 },
+              });
+              history.push("/cart");
+            }}
+          >
+            주문하기
+          </button>
           <button className="btn btn-primary" onClick={pageBack}>
             뒤로가기
           </button>
@@ -66,3 +79,13 @@ export default function Detail({ location }) {
     </div>
   );
 }
+
+function stateProps(state) {
+  console.log(state);
+  return {
+    state: state.reducer,
+    stateAlert: state.reducer2,
+  };
+}
+
+export default connect(stateProps)(Detail);

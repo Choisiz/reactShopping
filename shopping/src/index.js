@@ -28,7 +28,11 @@ let init = [
 ];
 
 function reducer(state = init, action) {
-  if (action.type === "plus") {
+  if (action.type === "order") {
+    let copyInit = [...state];
+    copyInit.push(action.payload);
+    return copyInit;
+  } else if (action.type === "plus") {
     let copyInit = [...state]; //사본만듬
     copyInit[0].quan++;
     return copyInit;

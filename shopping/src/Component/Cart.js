@@ -43,7 +43,11 @@ function Cart(props) {
       {props.stateAlert === true ? (
         <div className="my-alert2">
           <p>지금구매하시면 신규할인 20%</p>
-          <button onClick={() => props.dispatch({ type: "alertClose" })}>
+          <button
+            onClick={() =>
+              props.dispatch({ type: "alertClose", payload: { name: "kim" } })
+            }
+          >
             닫기
           </button>
         </div>
