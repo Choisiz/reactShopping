@@ -1,8 +1,11 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 function Cart(props) {
+  let state = useSelector((state) => state.reducer);
+  let dispatch = useDispatch();
+
   return (
     <div>
       <Table responsive>
@@ -12,7 +15,7 @@ function Cart(props) {
           <th>수량</th>
           <th>변경</th>
         </tr>
-        {props.state.map((a, i) => {
+        {state.map((a, i) => {
           return (
             <tr key={i}>
               <td>{a.id}</td>
@@ -21,14 +24,14 @@ function Cart(props) {
               <td>
                 <button
                   onClick={() => {
-                    props.dispatch({ type: "plus" });
+                    dispatch({ type: "plus" });
                   }}
                 >
                   +
                 </button>
                 <button
                   onClick={() => {
-                    props.dispatch({ type: "minus" });
+                    dispatch({ type: "minus" });
                   }}
                 >
                   -
@@ -45,7 +48,7 @@ function Cart(props) {
           <p>지금구매하시면 신규할인 20%</p>
           <button
             onClick={() =>
-              props.dispatch({ type: "alertClose", payload: { name: "kim" } })
+              dispatch({ type: "alertClose", payload: { name: "kim" } })
             }
           >
             닫기
@@ -56,12 +59,14 @@ function Cart(props) {
   );
 }
 
-function stateProps(state) {
-  console.log(state);
-  return {
-    state: state.reducer,
-    stateAlert: state.reducer2,
-  };
-}
+// function stateProps(state) {
+//   console.log(state);
+//   return {
+//     state: state.reducer,
+//     stateAlert: state.reducer2,
+//   };
+// }
 
-export default connect(stateProps)(Cart);
+// export default connect(stateProps)(Cart);
+
+export default Cart;
