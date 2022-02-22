@@ -18,7 +18,6 @@ export default function Main() {
         console.log(err);
       });
   };
-  console.log(shoes);
   return (
     <div>
       <Jumbotron />

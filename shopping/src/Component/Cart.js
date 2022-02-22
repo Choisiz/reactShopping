@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function Cart(props) {
   let state = useSelector((state) => state.reducer);
   let dispatch = useDispatch();
-
   return (
     <div>
       <Table responsive>
@@ -41,8 +40,7 @@ function Cart(props) {
           );
         })}
       </Table>
-      //alert같은경우에는 한 컴포넌트에서만 사용하면 리덕스에 저장할필요x //굳이
-      공유할게 아니면 쓸필요가 없다. useState를 추천
+
       {props.stateAlert === true ? (
         <div className="my-alert2">
           <p>지금구매하시면 신규할인 20%</p>

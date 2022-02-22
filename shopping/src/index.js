@@ -5,14 +5,25 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
-// let store = createStore(() => {
-//   return [
-//     { id: 0, name: "최고신발", quan: 2 },
-//     { id: 2, name: "최고신발2", quan: 1 },
-//   ];
-// });
+import data from "./data/data";
 
 let alertInit = true;
+
+function shoesReducder(state = data, action) {
+  if (action.type === "shoes") {
+    let shoes = action.payload;
+    return shoes;
+  } else if (action.type === "ShoesDetail") {
+    let shoes = action.payload;
+    return shoes;
+  } else if (action.type === "reload") {
+    let id = action.payload;
+    let shoes = data[id];
+    return shoes;
+  } else {
+    return state;
+  }
+}
 
 function reducer2(state = alertInit, action) {
   if (action.type === "alertClose") {
@@ -45,7 +56,7 @@ function reducer(state = init, action) {
   }
 }
 
-let store = createStore(combineReducers({ reducer, reducer2 }));
+let store = createStore(combineReducers({ reducer, reducer2, shoesReducder }));
 
 ReactDOM.render(
   <React.StrictMode>

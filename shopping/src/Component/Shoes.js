@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
 import { Col } from "react-bootstrap";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 export default function Shoes({ shoes }) {
   const id = shoes.id;
+  let dispatch = useDispatch();
   let history = useHistory();
   return (
     <Col
       md={4}
       key={shoes.i}
       onClick={() => {
+        dispatch({ type: "ShoesDetail", payload: shoes });
         history.push("/detail/" + shoes.id);
       }}
     >
