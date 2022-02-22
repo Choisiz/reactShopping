@@ -8,20 +8,18 @@ import Tabs from "./Tabs";
 import { connect } from "react-redux";
 function Detail(props) {
   const location = props.location;
+  console.log("dsds", props);
 
   const Box = styled.div`
     padding: 20px;
   `;
-
   const Title = styled.h4`
     font-size: 25px;
     color: ${(props) => props.color};
   `;
-
   const shoes = location.shoes;
 
-  let qq = useParams();
-
+  let { id } = useParams();
   let history = useHistory();
   let stock = useContext(stockContext);
 
