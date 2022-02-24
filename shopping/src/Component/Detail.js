@@ -61,7 +61,7 @@ function Detail(props) {
             onClick={() => {
               props.dispatch({
                 type: "order",
-                payload: { id: 2, name: "new", quan: 1 },
+                payload: { id: shoes.id, name: shoes.title, quan: 1 },
               });
               history.push("/cart");
             }}

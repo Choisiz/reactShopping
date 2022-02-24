@@ -35,21 +35,34 @@ function reducer2(state = alertInit, action) {
 
 let init = [
   { id: 0, name: "최고신발", quan: 2 },
-  { id: 2, name: "최고신발2", quan: 1 },
+  { id: 1, name: "최고신발2", quan: 1 },
 ];
 
 function reducer(state = init, action) {
   if (action.type === "order") {
-    let copyInit = [...state];
-    copyInit.push(action.payload);
-    return copyInit;
+    //주문
+    let found = state.findIndex((data) => {
+      return data.id === action.payload.id;
+    });
+    console.log("www", found);
+    if (found >= 0) {
+      let copyInit = [...state];
+      copyInit[found].quan++;
+      return copyInit;
+    } else {
+      let copyInit = [...state];
+      copyInit.push(action.payload);
+      return copyInit;
+    }
   } else if (action.type === "plus") {
-    let copyInit = [...state]; //사본만듬
-    copyInit[0].quan++;
+    //추가
+    let copyInit = [...state];
+    copyInit[action.payload.id].quan++;
     return copyInit;
   } else if (action.type === "minus") {
-    let copyInit = [...state]; //사본만듬
-    copyInit[0].quan--;
+    //삭제
+    let copyInit = [...state];
+    copyInit[action.payload.id].quan--;
     return copyInit;
   } else {
     return state;
