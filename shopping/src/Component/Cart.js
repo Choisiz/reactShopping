@@ -57,14 +57,4 @@ function Cart(props) {
   );
 }
 
-// function stateProps(state) {
-//   console.log(state);
-//   return {
-//     state: state.reducer,
-//     stateAlert: state.reducer2,
-//   };
-// }
-
-// export default connect(stateProps)(Cart);
-
 export default Cart;

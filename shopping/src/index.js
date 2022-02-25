@@ -8,6 +8,10 @@ import { combineReducers, createStore } from "redux";
 import data from "./data/data";
 
 let alertInit = true;
+const init = [
+  { id: 0, name: "최고신발", quan: 2 },
+  { id: 1, name: "최고신발2", quan: 1 },
+];
 
 function shoesReducder(state = data, action) {
   if (action.type === "shoes") {
@@ -33,18 +37,13 @@ function reducer2(state = alertInit, action) {
   }
 }
 
-let init = [
-  { id: 0, name: "최고신발", quan: 2 },
-  { id: 1, name: "최고신발2", quan: 1 },
-];
-
 function reducer(state = init, action) {
   if (action.type === "order") {
     //주문
     let found = state.findIndex((data) => {
       return data.id === action.payload.id;
     });
-    console.log("www", found);
+
     if (found >= 0) {
       let copyInit = [...state];
       copyInit[found].quan++;
@@ -69,7 +68,9 @@ function reducer(state = init, action) {
   }
 }
 
-let store = createStore(combineReducers({ reducer, reducer2, shoesReducder }));
+const store = createStore(
+  combineReducers({ reducer, reducer2, shoesReducder })
+);
 
 ReactDOM.render(
   <React.StrictMode>

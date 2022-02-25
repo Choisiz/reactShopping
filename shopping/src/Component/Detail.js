@@ -24,7 +24,6 @@ function Detail(props) {
       setAlert(false);
     }, 2000);
   });
-
   const shoes = useSelector((state) => state.shoesReducder);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -59,7 +58,7 @@ function Detail(props) {
           <button
             className="btn btn-danger"
             onClick={() => {
-              props.dispatch({
+              dispatch({
                 type: "order",
                 payload: { id: shoes.id, name: shoes.title, quan: 1 },
               });
@@ -78,12 +77,4 @@ function Detail(props) {
   );
 }
 
-function stateProps(state) {
-  console.log(state);
-  return {
-    state: state.reducer,
-    stateAlert: state.reducer2,
-  };
-}
-
-export default connect(stateProps)(Detail);
+export default Detail;
