@@ -24,6 +24,7 @@ function Detail(props) {
       setAlert(false);
     }, 2000);
   });
+
   const shoes = useSelector((state) => state.shoesReducder);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -35,6 +36,19 @@ function Detail(props) {
   const pageBack = () => {
     history.goBack();
   };
+
+  useEffect(() => {
+    var arr = localStorage.getItem("watched");
+    if (arr === null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(arr);
+    }
+    arr.push(id);
+    arr = new Set(arr);
+    arr = [...arr];
+    localStorage.setItem("watched", JSON.stringify(arr));
+  }, []);
 
   const myAlert = (
     <div className="my-alert">
